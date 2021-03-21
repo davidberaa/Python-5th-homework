@@ -1,104 +1,90 @@
-# 2 დავალება
+# 1
 
-# class Calculator:
+# class Book:
+#     def __init__(self, book_name, author, release_date, amount_pages):
+#         self._book_name = book_name
+#         self._author = author
+#         self._release_date = release_date
+#         self._amount_pages = amount_pages
 #
-#     def jami(a, b):
-#         return a + b
+#     def info(self):
+#         return print(f"წიგნის სახელი - {self._book_name}, ავტორი - {self._author}, გამოშვების წელი - {self._release_date}, გვერდების რაოდენობა - {self._amount_pages}")
 #
-#     def sxvaoba(a, b):
-#         return a - b
+# book1 = Book("სახელი", "ავტორი", "გამოშვების წელი", "გვერდების რაოდენობა")
+# book1.info()
 #
-#     def gayofa(a, b):
-#         return a / b
+# book2 = Book("სახელი2", "ავტორი2", "გამოშვების წელი2", "გვერდების რაოდენობა2")
+# book2.info()
+
+
+
+# 2
+
+# class List(list):
+#     def max(self):
+#         result = self[0]
+#         for i in self:
+#             if i > result:
+#                 result = i
+#         return result
 #
-#     def gamravleba(a, b):
-#         return a * b
+#     def min(self):
+#         result = self[0]
+#         for i in self:
+#             if i < result:
+#                 result = i
+#         return result
 #
-# a = Calculator.jami(10, 5)
-# print(a)
+# list1 = List([3, 1, 4, 5, 2])
+# print(list1.max())
+# print(list1.min())
+
+
+
+# 3
+
+# class Animal:
+#     def __init__(self, name, age):
+#         self._name = name
+#         self._age = age
 #
-# b = Calculator.sxvaoba(10, 5)
-# print(b)
+#     def info(self):
+#         return print(f"სახელი - {self._name}, ასაკი - {self._age}")
 #
-# c = Calculator.gayofa(10, 5)
-# print(c)
 #
-# d = Calculator.gamravleba(10, 5)
-# print(d)
-
-
-
-# 3 დავალება
-
-# class Rectangle:
-#     def __init__(self, width, length):
-#         self.width = width
-#         self.length = length
+# class Dog(Animal):
+#     def __init__(self, name, age, breed, color):
+#         super().__init__(age, name)
+#         self._breed = breed
+#         self._color = color
 #
-#     def area(self):
-#         return self.width * self.length
+#     def info(self):
+#         print(f"სახელი - {self._name}, ასაკი - {self._age}, ასაკი - {self._age}, ჯიში - {self._breed}, ფერი - {self._color}")
 #
-#     def perimeter(self):
-#         return 2*(self.width + self.length)
-#
-#     def print_info(self):
-#         return print(f"სიგრძე - {self.length}, სიგანე - {self.width}, ფართობი - {self.area()}, პერიმეტრი - {self.perimeter()}")
-#
-# a = Rectangle(5, 4)
-# a.print_info()
+# dog1 = Dog("Bobby", "5", "Labrador", "Black")
+# dog1.info()
 
 
 
-# 4 დავალება
+# 4
 
-class Employee:
+class CallMixin:
+    def call(self):
+        return print(f"Calling to {self._phone}")
 
-    def __init__(self, name, surname, age, salary):
-        self.name = name
-        self.surname = surname
-        self.age = age
-        self.salary = salary
+class Person(CallMixin):
+    def __init__(self, fname, lname, phone):
+        self._fname = fname
+        self._lname = lname
+        self._phone = phone
 
-    list_names = []
-    list_surnames = []
-    list_ages = []
-    list_salaries = []
-    a = open("dataset1.csv", "r")
-    for i in range(100):
-        temp = ""
-        b = a.readline()
-        b = b.split(",")
-        list_names.append(b[0])
-        list_surnames.append(b[1])
-        list_ages.append(b[2])
-        count = 1
-        for j in b[3]:
-            if count > 4:
-                list_salaries.append(temp)
-                break
-            temp = temp + j
-            count = count + 1
-    a.close()
+    def info(self):
+        return print(f"fname - {self._fname}, lname - {self._lname}, phone - {self._phone}")
 
-    def print_info(self):
-        return print(f"სახელი: {self.name}, გვარი: {self.surname}, ასაკი: {self.age}, ხელფასი: {self.salary}")
-
-    index = 0
-    for i in list_salaries:
-        if i == min(list_salaries):
-            break
-        else:
-            index = index + 1
-    print(f"ყველაზე დაბალი ხელფასის მქონე პირი: სახელი - {list_names[index]}, გვარი - {list_surnames[index]}, ასაკი {list_ages[index]}, ხელფასი - {list_salaries[index]} ")
+person1 = Person("name", "lastname", "+995 555 55 55 55")
+person1.call()
 
 
-    index1 = 0
-    for i in list_ages:
-        if i == max(list_ages):
-            break
-        else:
-            index1 = index1 + 1
-    print(f"ყველაზე ასაკიანი პირი: სახელი - {list_names[index1]}, გვარი - {list_surnames[index1]}, ასაკი - {list_ages[index1]}, ხელფასი - {list_salaries[index1]}")
 
-test = Employee("Saxeli", "Gvari", "20", "5000")
-test.print_info()
+
+
