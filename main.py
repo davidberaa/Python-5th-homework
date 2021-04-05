@@ -1,90 +1,86 @@
-# 1
+import sqlite3
+connection = sqlite3.connect('census.db')
 
-# class Book:
-#     def __init__(self, book_name, author, release_date, amount_pages):
-#         self._book_name = book_name
-#         self._author = author
-#         self._release_date = release_date
-#         self._amount_pages = amount_pages
-#
-#     def info(self):
-#         return print(f"წიგნის სახელი - {self._book_name}, ავტორი - {self._author}, გამოშვების წელი - {self._release_date}, გვერდების რაოდენობა - {self._amount_pages}")
-#
-# book1 = Book("სახელი", "ავტორი", "გამოშვების წელი", "გვერდების რაოდენობა")
-# book1.info()
-#
-# book2 = Book("სახელი2", "ავტორი2", "გამოშვების წელი2", "გვერდების რაოდენობა2")
-# book2.info()
+cursor = connection.cursor()
+
+cursor.execute("CREATE TABLE IF NOT EXISTS density(province_or_territory TEXT, population INTEGER, land_area REAL)")
+
+cursor.execute("INSERT INTO density VALUES('Newfoundland and Labrador', 512930, 370501.69 )")
+cursor.execute("INSERT INTO density VALUES('Prince Edward Island', 135294, 5684.39)")
+cursor.execute("INSERT INTO density VALUES('Nova Scotia', 908007 , 52917.43)")
+cursor.execute("INSERT INTO density VALUES('New Brunswick', 729498 , 71355.67)")
+cursor.execute("INSERT INTO density VALUES('Quebec', 7237479, 1357743.08)")
+cursor.execute("INSERT INTO density VALUES('Ontario', 11410046, 907655.59)")
+cursor.execute("INSERT INTO density VALUES('Manitoba', 1119583, 551937.87)")
+cursor.execute("INSERT INTO density VALUES('Saskatchewan', 978933, 586561.35)")
+cursor.execute("INSERT INTO density VALUES('Alberta ', 2974807, 639987.12)")
+cursor.execute("INSERT INTO density VALUES('British Columbia', 3907738, 926492.48)")
+cursor.execute("INSERT INTO density VALUES('Yukon Territory', 28674, 474706.97)")
+cursor.execute("INSERT INTO density VALUES('Northwest Territories', 37360, 1141108.37)")
+cursor.execute("INSERT INTO density VALUES('Nunavut ', 26745, 1925460.18)")
 
 
+# task 4
+def print_info():
+    cursor.execute("SELECT * FROM density")
+    rows = cursor.fetchall()
 
-# 2
+    for i in rows:
+        print(i)
 
-# class List(list):
-#     def max(self):
-#         result = self[0]
-#         for i in self:
-#             if i > result:
-#                 result = i
-#         return result
-#
-#     def min(self):
-#         result = self[0]
-#         for i in self:
-#             if i < result:
-#                 result = i
-#         return result
-#
-# list1 = List([3, 1, 4, 5, 2])
-# print(list1.max())
-# print(list1.min())
+print_info()
 
 
 
-# 3
+# task 5
+def print_population_info():
+    cursor.execute("SELECT population FROM density")
+    rows = cursor.fetchall()
 
-# class Animal:
-#     def __init__(self, name, age):
-#         self._name = name
-#         self._age = age
-#
-#     def info(self):
-#         return print(f"სახელი - {self._name}, ასაკი - {self._age}")
-#
-#
-# class Dog(Animal):
-#     def __init__(self, name, age, breed, color):
-#         super().__init__(age, name)
-#         self._breed = breed
-#         self._color = color
-#
-#     def info(self):
-#         print(f"სახელი - {self._name}, ასაკი - {self._age}, ასაკი - {self._age}, ჯიში - {self._breed}, ფერი - {self._color}")
-#
-# dog1 = Dog("Bobby", "5", "Labrador", "Black")
-# dog1.info()
+    for i in rows:
+        print(i)
+
+print_population_info()
 
 
 
-# 4
+# task 6
+def print_pop_less_than_million():
+    cursor.execute("SELECT DISTINCT province_or_territory FROM density WHERE population < 1000000")
+    print(cursor.fetchall())
 
-class CallMixin:
-    def call(self):
-        return print(f"Calling to {self._phone}")
-
-class Person(CallMixin):
-    def __init__(self, fname, lname, phone):
-        self._fname = fname
-        self._lname = lname
-        self._phone = phone
-
-    def info(self):
-        return print(f"fname - {self._fname}, lname - {self._lname}, phone - {self._phone}")
-
-person1 = Person("name", "lastname", "+995 555 55 55 55")
-person1.call()
+print_pop_less_than_million()
 
 
 
+# task 7
+def print_pop_less_than_million_more_than_5():
+    cursor.execute("SELECT DISTINCT province_or_territory FROM density WHERE population < 1000000 OR population > 5000000")
+    print(cursor.fetchall())
+
+print_pop_less_than_million_more_than_5()
 
 
+
+# task 8
+def print_pop1_5():
+    cursor.execute("SELECT DISTINCT province_or_territory FROM density WHERE population > 1000000 AND population < 5000000")
+    print(cursor.fetchall())
+
+print_pop1_5()
+
+
+
+# task 9
+def print_area_more_than_200k():
+    cursor.execute("SELECT DISTINCT population FROM density WHERE land_area > 200000")
+    print(cursor.fetchall())
+
+print_area_more_than_200k()
+
+
+
+# task 10 ------------------
+
+
+connection.commit()
