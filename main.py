@@ -1,90 +1,49 @@
 # task 1
-# class MyList:
-#     def __init__(self, *args):
-#         self._args = args
+
+# import requests
 #
-#         data = []
-#         for i in self._args:
-#             data.append(i)
+# response = requests.get("https://www.mes.gov.ge/index.php?lang=geo")
 #
-#     def __add__(self, other):
-#         newlist = self._args + other._args
-#         return list(newlist)
+# a = open("mes.gov.ge", "w")
+# a.write(str(response.content))
 #
-#
-#     def __mul__(self, other):
-#         newlist = self._args * other
-#         return list(newlist)
-#
-#     def __str__(self):
-#         return str(self._args)
-#
-#
-# l1 = MyList(1, 2, 3)
-# l2 = MyList(4, 5)
-#
-# print(l1 + l2)
-#
-# print(l1 * 2)
-#
-# print(str(l1))
+# print(str(response.content).count("განათლება"))
 
 
 
 # task 2
-"""არასრულყოფილია ეს დავალება, მაგრამ როგორც შემეძლო ისე დავწერე"""
-class Testpaper:
 
-    def __init__(self, subject, mark_scheme, pass_mark):
-        self._subject = subject
-        self._mark_scheme = mark_scheme
-        self._pass_mark = pass_mark
-
-    def get_subject(self):
-        return self._subject
-
-    def get_mark_scheme(self):
-        return self._mark_scheme
-
-    def get_pass_mark(self):
-        return self._pass_mark
-
-class Student():
-
-    def take_test(self, subject, mark_scheme):
-
-
-        def check_answers():
-            correct = 0
-            wrong = 0
-            mark_scheme = Testpaper.get_mark_scheme()
-
-            for i in mark_scheme:
-                for j in self._mark_scheme:
-                    if i == j:
-                        correct = correct + 1
-                    else:
-                        wrong = wrong + 1
-            answer_count = correct + wrong
-            result = (correct * 100) / answer_count
-            result = round(result)
-
-            return result
+# import requests
+#
+# response1 = requests.get("https://httpbin.org/image/jpeg")
+# a = open("image1.png", "wb")
+# a.write(response1.content)
+# a.close()
+#
+# response2 = requests.get("https://httpbin.org/image/png")
+# b = open("image2.png", "wb")
+# b.write(response2.content)
+# b.close()
+#
+# response3 = requests.get("https://httpbin.org/image/svg")
+# c = open("image3.png", "wb")
+# c.write(response3.content)
+# c.close()
+#
+# response4 = requests.get("https://httpbin.org/image/webp")
+# d = open("image4.png", "wb")
+# d.write(response4.content)
+# d.close()
 
 
-        self._subject = subject
-        self._mark_scheme = mark_scheme
-        subject = Testpaper.get_subject()
-        pass_mark = Testpaper.get_pass_mark()
 
-        if self._subject == subject:
-            if check_answers() >= pass_mark:
-                print(f"{self._subject} : Passed! ({str(check_answers()) + '%'})")
-            else:
-                print(f"{self._subject} : Failed! {str(check_answers()) + '%'})")
+# task 3
 
+import requests
 
-Maths = Testpaper("Maths", ["1A", "2C", "3D", "4A", "5A"], "60")
+response = requests.get("https://httpbin.org/ip")
 
-student1 = Student
-student1.take_test("Maths", ["1A", "2C", "3D", "4A", "5C"])
+a = open("my-ip.txt", "w")
+for i in str(response.content):
+    if i.isnumeric() or i == ".":
+        a.write(str(i))

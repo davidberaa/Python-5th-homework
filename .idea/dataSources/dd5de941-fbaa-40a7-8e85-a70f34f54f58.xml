@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="census.db">
+<dataSource name="rick.db">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.20">
     <root id="1">
       <ServerVersion>3.34.0</ServerVersion>
@@ -369,7 +369,7 @@
     <package id="167" parent="1" name="json_tree"/>
     <package id="168" parent="1" name="rtree"/>
     <package id="169" parent="1" name="rtree_i32"/>
-    <table id="170" parent="2" name="density"/>
+    <table id="170" parent="2" name="Cars"/>
     <table id="171" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
@@ -1330,15 +1330,15 @@
     <argument id="490" parent="159">
       <Position>1</Position>
     </argument>
-    <column id="491" parent="170" name="province_or_territory">
+    <column id="491" parent="170" name="Company">
       <Position>1</Position>
       <DataType>TEXT|0s</DataType>
     </column>
-    <column id="492" parent="170" name="population">
+    <column id="492" parent="170" name="Model">
       <Position>2</Position>
-      <DataType>INTEGER|0s</DataType>
+      <DataType>TEXT|0s</DataType>
     </column>
-    <column id="493" parent="170" name="land_area">
+    <column id="493" parent="170" name="Price">
       <Position>3</Position>
       <DataType>REAL|0s</DataType>
     </column>
